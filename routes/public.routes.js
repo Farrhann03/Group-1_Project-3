@@ -24,4 +24,13 @@ router.get("/public/cruisine", async (req, res) => {
     return res.send(JSON.stringify(results));
 });
 
+router.get("/public/price", async (req, res) => {
+  const results =
+  await Price.findAll();
+  await Cruisine.findAll();
+  await Location.findAll();
+  
+  return res.send(JSON.stringify(results));
+});
+
 module.exports = router;

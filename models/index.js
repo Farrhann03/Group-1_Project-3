@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('makan_apa', 'user', 'pass',{
-    dialect: 'sqlite',
-    host: './dev.sqlite'
+const sequelize = new Sequelize('makan_apa', 'postgres', 'password',{
+    host: 'localhost',
+    dialect: 'postgres',
 });
 
 
