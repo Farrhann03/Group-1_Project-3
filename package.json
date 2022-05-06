@@ -1,0 +1,26 @@
+{
+  "name": "group-1_project-3",
+  "version": "1.0.0",
+  "description": "Supper Makan Apa?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ocean272/Group-1_Project-3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ocean272/Group-1_Project-3/issues"
+  },
+  "homepage": "https://github.com/Ocean272/Group-1_Project-3#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "sequelize": "^6.19.0",
+    "sqlite3": "^5.0.7"
+  }
+}
