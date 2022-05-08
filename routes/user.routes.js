@@ -5,7 +5,7 @@ const LocationController = require("../controllers/LocationController");
 
 const locationController = new LocationController();
 
-router.get("/protected", (req, res) => {
+router.get("/user", (req, res) => {
   return res.send("You have called a user route");
 });
 
