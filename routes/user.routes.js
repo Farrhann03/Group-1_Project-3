@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const LocationController = require("../controllers/LocationController");
 
-
 const locationController = new LocationController();
 
 router.get("/user", (req, res) => {
@@ -13,7 +12,7 @@ router.get("/user", (req, res) => {
 router.post("/user/onboard", locationController.onboard);
 //router.post("/user/offboard", locationController.offboard);
 router.put("/user/vehicle", locationController.update);
-router.delete("/user/cruisine/:cruisineId", locationController.delete);
+router.delete("/user/cuisine/:cuisineId", locationController.delete);
 router.delete("/user/price/:priceId", locationController.delete);
 
 module.exports = router;
