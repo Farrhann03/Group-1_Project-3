@@ -9,7 +9,7 @@ const sequelize = new Sequelize('d15smmo3v9jq5p', 'pygcczeyvzqhbo', '1757cecd350
 const Location = require("./location")(sequelize);
 const Cuisine = require("./cuisine")(sequelize);
 const Price = require("./price")(sequelize);
-const User = require('./user')(sequelize);
+//const User = require('./user')(sequelize);
 
 Location.belongsTo(Cuisine, {
   foreignKey: "cuisineId",
@@ -23,5 +23,5 @@ module.exports  = {
   Location,
   Cuisine,
   Price,
-  User,
+ // User,
 };
