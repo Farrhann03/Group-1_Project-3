@@ -15,12 +15,12 @@ router.get("/public/location", async (req, res) => {
   return res.send(JSON.stringify(results));
 });
 
-router.get("/public/location/:id"), async (req,res)=> {
-  const results =
-  await Location.findByPk(req.params.id).
-    then((results) => res.send(JSON.stringify(results.id)));
-    console.table(JSON.parse(JSON.stringify(results.id)));
-};
+// router.get("/public/location/:id"), async (req,res)=> {
+//   const results =
+//   await Location.findByPk(req.params.id).
+//     then((results) => res.send(JSON.stringify(results.id)));
+//     console.table(JSON.parse(JSON.stringify(results.id)));
+// };
 
 
 module.exports = router;
