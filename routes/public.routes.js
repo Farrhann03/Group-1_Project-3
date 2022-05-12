@@ -7,27 +7,15 @@ router.get("/public", (req, res) => {
 });
 
 router.get("/public/location", async (req, res) => {
-  const results = await Location.findAll();
-  await Cuisine.findAll();
-  await Price.findAll();
-
-  return res.send(JSON.stringify(results));
-});
-
-router.get("/public/cruisine", async (req, res) => {
-  const results = await Cuisine.findAll();
-  await Location.findAll();
-  await Price.findAll();
-
-  return res.send(JSON.stringify(results));
-});
-
-router.get("/public/price", async (req, res) => {
-  const results = await Price.findAll();
-  await Cuisine.findAll();
+  
+  const results = 
   await Location.findAll();
 
+  await Cuisine.findAll();
+  await Price.findAll();
+  console.table(JSON.parse(JSON.stringify(results)));
   return res.send(JSON.stringify(results));
 });
+
 
 module.exports = router;
