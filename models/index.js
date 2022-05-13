@@ -1,10 +1,9 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize('makan', 'postgres', 'ocean272', {
     host: 'localhost',
     dialect: 'postgres',
 });
-
 
 const Location = require("./location")(sequelize);
 const Cuisine = require("./cuisine")(sequelize);
@@ -18,7 +17,15 @@ Location.belongsTo(Price, {
   foreignKey: "priceId",
 });
 
-module.exports  = {
+Location.belongsTo(Cuisine, {
+  foreignKey: "cuisineId",
+});
+Location.belongsTo(Price, {
+  foreignKey: "priceId",
+});
+
+
+module.exports = {
   sequelize,
   Location,
   Cuisine,

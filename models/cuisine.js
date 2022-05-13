@@ -1,6 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 
+
 module.exports = function (sequelize){
+
   class Cuisine extends Model {}
 
   Cuisine.init(
@@ -13,6 +15,7 @@ module.exports = function (sequelize){
       type_of_food: {
         type: DataTypes.STRING,
       },
+
       createdAt: { 
           type: DataTypes.DATE,
           field: "created_at" ,   
@@ -20,7 +23,6 @@ module.exports = function (sequelize){
       updatedAt: { 
             type: DataTypes.DATE,
             field: "updated_at",
-            
       },
     },
     {
@@ -32,3 +34,4 @@ module.exports = function (sequelize){
 
   return Cuisine;
 };
+
