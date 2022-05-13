@@ -1,16 +1,16 @@
-const { Location, Cruisine, Price } = require("../models");
+const { Location, Cuisine, Price } = require("../models");
 
 module.exports = {
-  onboard: async (locationId, cruisineId, priceId) => {
+  onboard: async (locationId, cuisineId, priceId) => {
     let result = {
       message: null,
       status: null,
       data: null,
     };
     const location = await Location.findByPk(locationId);
-    const cruisine = await Cruisine.findByPk(cruisineId);
+    const cuisine = await Cuisine.findByPk(cuisineId);
     const price = await Price.findByPk(priceId);
-    console.log("Location", location, "Cruisine", cruisine, "Price", price);
+    console.log("Location", location, "Cuisine", cuisine, "Price", price);
 
     if (!location) {
       result.message = `Location ID ${location.Id} is not found.`;
@@ -18,7 +18,7 @@ module.exports = {
       return result;
     }
 
-    if (location.cruisineId) {
+    if (location.cuisineId) {
       result.message = `Location ID ${location.id} is already in use.`;
       result.status = 400;
       result.data = location;
@@ -32,8 +32,8 @@ module.exports = {
         return result;
     }
 
-    if (!cruisine) {
-      result.message = `cruisine ID ${cruisine} is not found.`;
+    if (!cuisine) {
+      result.message = `cuisine ID ${cuisine} is not found.`;
       result.status = 404;
       return result;
     }
@@ -44,7 +44,7 @@ module.exports = {
         return result;
       }
 
-    location.cruisineId = cruisine.id;
+    location.cuisineId = cuisine.id;
     await location.save();
 
     location.priceId = price.id;
@@ -71,7 +71,7 @@ module.exports = {
   //       return result;
   //     }
 
-  //   location.cruisine = null;
+  //   location.cuisine = null;
   //   await location.save();
 
   //   result.data = location;
@@ -82,6 +82,31 @@ module.exports = {
 
   // },
 
+  create: async (locationId, name, address, located_at) => {
+    //The result object is where we will put the result to be sent to th client.
+    let result = {
+      message: null,
+      status: null,
+      data: null,
+    };
+
+    //Look for the restaurant and in the database.
+    const newLocation = await Location.create({
+        locationId: locationId,
+        name: name,
+        address: address,
+        located_at: located_at,
+        
+      });
+
+    await newLocation.save(); // update the location
+    result.data = newLocation;
+    result.status = 200;
+    result.message = "Update successful";
+
+    return result;
+  },
+  
   update: async (locationId, name, address, located_at) => {
     //The result object is where we will put the result to be sent to th client.
     let result = {

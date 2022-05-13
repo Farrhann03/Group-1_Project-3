@@ -1,25 +1,27 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('makan_apa', 'postgres', 'password',{
+const sequelize = new Sequelize('makan', 'postgres', 'ocean272', {
     host: 'localhost',
     dialect: 'postgres',
 });
 
 
 const Location = require("./location")(sequelize);
-const Cruisine = require("./cruisine")(sequelize);
+const Cuisine = require("./cuisine")(sequelize);
 const Price = require("./price")(sequelize);
+const User = require('./user')(sequelize);
 
-// Location.belongsTo(Cruisine, {
-//   foreignKey: "cruisine",
-// });
-// Location.belongsTo(Price, {
-//   foreignKey: "price",
-// });
+Location.belongsTo(Cuisine, {
+  foreignKey: "cuisineId",
+});
+Location.belongsTo(Price, {
+  foreignKey: "priceId",
+});
 
 module.exports  = {
   sequelize,
   Location,
-  Cruisine,
+  Cuisine,
   Price,
+  User,
 };

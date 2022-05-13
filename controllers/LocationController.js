@@ -2,16 +2,16 @@ const locationService = require("../services/location.service");
 
 class LocationController {
   async onboard(req, res) {
-    const { priceId, cruisineId, locationId } = req.body;
+    const { priceId, cuisineId, locationId } = req.body;
 
-    if (typeof priceId !== "number" || typeof cruisineId !== "number" || typeof locationId !== "number") {
+    if (typeof priceId !== "number" || typeof cuisineId !== "number" || typeof locationId !== "number") {
       res.status(400);
-      return res.send("priceId , cruisineId and locationId need to be integers.");
+      return res.send("priceId , cuisineId and locationId need to be integers.");
     }
 
       const { status, data, message } = await locationService.onboard(
       locationId,
-      cruisineId,
+      cuisineId,
       priceId,
     );
     res.status(status);
@@ -21,11 +21,11 @@ class LocationController {
   }
 
   // async offboard(req, res) {
-  //   const { priceId, cruisineId, locationId } = req.body;
+  //   const { priceId, cuisineId, locationId } = req.body;
 
-  //   if (typeof priceId !== "number" || typeof cruisineId !== "number" || typeof locationId !== "number") {
+  //   if (typeof priceId !== "number" || typeof cuisineId !== "number" || typeof locationId !== "number") {
   //     res.status(400);
-  //     return res.send("priceId , cruisineId and locationId need to be integers.");
+  //     return res.send("priceId , cuisineId and locationId need to be integers.");
   //   }
 
   //     const { status, data, message } = await locationService.offboard(
@@ -57,12 +57,33 @@ class LocationController {
 
   }
 
+  async create(req, res) {
+    const {locationId, name, address, located_at, cuisineId, priceId} = req.body;
+    if(typeof locationId !== "number" || typeof name !== "string" || typeof address !== "string" || typeof located_at !== "string"){
+      res.status(400);
+      return res.send("Incorrect request data");
+  }
+      // Make sure the sequence is the same as in location.
+      const { status, data, message } = await locationService.create(
+      locationId,
+      name,
+      address,
+      located_at,
+      cuisineId,
+      priceId,
+    );
+    res.status(status);
+
+    res.json({ message, data });
+
+  }
+
   async delete(req, res) {
-    const cruisineId = req.params.cruisineId;
-    console.log(cruisineId);
+    const cuisineId = req.params.cuisineId;
+    console.log(cuisineId);
 
     const { status, data, message } = await locationService.delete(
-      cruisineId
+      cuisineId
     );
     res.status(status);
 

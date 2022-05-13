@@ -12,26 +12,27 @@ module.exports = function (sequelize){
       },
       name: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       address: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      located_At: {
+      located_at: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      cruisine: {
+      cuisineId: {
         //(FK)
         type: DataTypes.STRING,
         allowNull: false,
-        field: "cruisine",
+        field: "cuisine_id",
       },
-      price: {
+      priceId: {
         //(FK)
         type: DataTypes.STRING,
         allowNull: false,
-        field: "price",
+        field: "price_id",
       },
       createdAt: {
           type: DataTypes.DATE,
