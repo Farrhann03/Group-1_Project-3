@@ -10,6 +10,12 @@ const Cuisine = require("./cuisine")(sequelize);
 const Price = require("./price")(sequelize);
 const User = require('./user')(sequelize);
 
+Location.belongsTo(Cuisine, {
+  foreignKey: "cuisineId",
+});
+Location.belongsTo(Price, {
+  foreignKey: "priceId",
+});
 
 Location.belongsTo(Cuisine, {
   foreignKey: "cuisineId",

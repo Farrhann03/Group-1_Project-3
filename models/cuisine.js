@@ -29,7 +29,6 @@ module.exports = function (sequelize){
       sequelize,
       tableName: "cuisine",
       modelName: "Cuisine",
-
     }
   );
 

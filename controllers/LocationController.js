@@ -14,7 +14,6 @@ class LocationController {
     const { status, data, message } = await locationService.onboard(
       locationId,
       cuisineId,
-
       priceId,
 
     );
@@ -62,6 +61,27 @@ class LocationController {
     res.status(status);
 
     res.json({ message, data });
+  }
+
+  async create(req, res) {
+    const {locationId, name, address, located_at, cuisineId, priceId} = req.body;
+    if(typeof locationId !== "number" || typeof name !== "string" || typeof address !== "string" || typeof located_at !== "string"){
+      res.status(400);
+      return res.send("Incorrect request data");
+  }
+      // Make sure the sequence is the same as in location.
+      const { status, data, message } = await locationService.create(
+      locationId,
+      name,
+      address,
+      located_at,
+      cuisineId,
+      priceId,
+    );
+    res.status(status);
+
+    res.json({ message, data });
+
   }
 
   async create(req, res) {
