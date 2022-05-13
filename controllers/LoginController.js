@@ -2,7 +2,7 @@ const loginService = require("../services/login.service");
 
 class LoginController {
     async create(req, res) {
-        try{
+        //try{
         const {username, email, password} = req.body;
         
     const { status, data, message } = await loginService.create(
@@ -13,9 +13,9 @@ class LoginController {
         res.send({status});
         res.json({ message, data });
 
-        }catch (e) {
-            console.log(e);
-        }  
+        // }catch (e) {
+        //     console.log(e);
+        // }  
     }
 }
 

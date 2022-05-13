@@ -14,10 +14,18 @@ module.exports = function (sequelize) {
       password: {
         type: DataTypes.STRING,
       },
+      createdAt: { 
+        type: DataTypes.DATE,
+        field: "createdAt" ,   
+      },
+      updatedAt: { 
+          type: DataTypes.DATE,
+          field: "updatedAt",
+          
+    },
     },
     {
       sequelize,
-      tableName: "User",
       modelName: "user",
     }
   );

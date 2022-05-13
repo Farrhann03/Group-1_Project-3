@@ -7,12 +7,15 @@ router.get("/public", (req, res) => {
 });
 
 router.get("/public/location", async (req, res) => {
-  
-  const results = 
-  await Location.findAll();
+  try{
+    const results = 
+    await Location.findAll();
+    console.table(JSON.parse(JSON.stringify(results)));
+    return res.send(JSON.stringify(results));
+  }catch (err) {
+    console.log(err);
+  }
 
-  console.table(JSON.parse(JSON.stringify(results)));
-  return res.send(JSON.stringify(results));
 });
 
 // router.get("/public/location/:id"), async (req,res)=> {
