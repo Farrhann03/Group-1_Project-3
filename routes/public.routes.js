@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const { Location } = require("../models");
 
-
 router.get("/public", (req, res) => {
   return res.send("You have called a public route");
 });
 
 router.get("/public/location", async (req, res) => {
+  
   const results = 
   await Location.findAll();
 

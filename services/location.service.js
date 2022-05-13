@@ -26,10 +26,10 @@ module.exports = {
     }
 
     if (location.priceId) {
-        result.message = `Location ID ${location.id} is already in use.`;
-        result.status = 400;
-        result.data = location;
-        return result;
+      result.message = `Location ID ${location.id} is already in use.`;
+      result.status = 400;
+      result.data = location;
+      return result;
     }
 
     if (!cuisine) {
@@ -39,10 +39,10 @@ module.exports = {
     }
 
     if (!price) {
-        result.message = `Price ID ${price} is not found.`;
-        result.status = 404;
-        return result;
-      }
+      result.message = `Price ID ${price} is not found.`;
+      result.status = 404;
+      return result;
+    }
 
     location.cuisineId = cuisine.id;
     await location.save();

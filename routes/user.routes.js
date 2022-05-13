@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const LocationController = require("../controllers/LocationController");
+
 const { Cuisine, Price } = require("../models")
+
 
 const locationController = new LocationController();
 
@@ -27,8 +29,10 @@ return res.send(JSON.stringify(results));
 // Invoke onboard() in LocationController based on the route
 router.post("/user/onboard", locationController.onboard);
 //router.post("/user/offboard", locationController.offboard);
+
 router.post("/user/location", locationController.create);
 router.put("/user/location", locationController.update);
+
 router.delete("/user/cuisine/:cuisineId", locationController.delete);
 router.delete("/user/price/:priceId", locationController.delete);
 
