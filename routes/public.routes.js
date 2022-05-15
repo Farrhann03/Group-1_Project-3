@@ -18,12 +18,4 @@ router.get("/public/location", async (req, res) => {
 
 });
 
-// router.get("/public/location/:id"), async (req,res)=> {
-//   const results =
-//   await Location.findByPk(req.params.id).
-//     then((results) => res.send(JSON.stringify(results.id)));
-//     console.table(JSON.parse(JSON.stringify(results.id)));
-// };
-
-
 module.exports = router;
