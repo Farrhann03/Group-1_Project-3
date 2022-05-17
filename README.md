@@ -34,3 +34,9 @@ payload: (example) Please use an actual address cos this writes into the databas
     "cuisineId": 4,
     "priceId": 1
   }
+
+Delete cuisineId (Do take note that if you try this, the actual data will be deleted from db.)
+YARC:  http://localhost:3000/user/cuisineId/<id number>  (DELETE)
+
+Delete priceId (Do take note that if you try this, the actual data will be deleted from db.)
+YARC:  http://localhost:3000/user/cuisineId/<id number>  (DELETE)
