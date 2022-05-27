@@ -56,33 +56,35 @@ module.exports = {
 
     return result;
   },
-  // offboard: async (locationId) => {
-  //   let result = {
-  //     message: null,
-  //     status: null,
-  //     data: null,
-  //   };
-  //   const location = await Location.findByPk(locationId);
-  //   console.log('Location', location);
 
-  //   if (!location) {
-  //       result.message = `Location ID ${locationId} is not found.`;
-  //       result.status = 404;
-  //       return result;
-  //     }
+  offboard: async (locationId) => {
+    let result = {
+      message: null,
+      status: null,
+      data: null,
+    };
+    const location = await Location.findByPk(locationId);
+    console.log("location", location);
 
-  //   location.cuisine = null;
-  //   await location.save();
+    if (!location) {
+        result.message = `Location ID ${locationId} is not found.`;
+        result.status = 404;
+        return result;
+      }
 
-  //   result.data = location;
-  //   result.status = 200;
-  //   result.message = "Offboard successful";
+    location.cuisineId = null;
+    location.priceId = null;
+    await location.save();
 
-  //   return result;
+    result.data = location;
+    result.status = 200;
+    result.message = "Offboard successful";
 
-  // },
+    return result;
 
-  create: async (locationId, name, address, located_at) => {
+  },
+
+  create: async (locationId, name, address, located_at, cuisineId, priceId) => {
     //The result object is where we will put the result to be sent to th client.
     let result = {
       message: null,
@@ -96,6 +98,8 @@ module.exports = {
         name: name,
         address: address,
         located_at: located_at,
+        cuisineId : cuisineId,
+        priceId: priceId
         
       });
 
@@ -107,7 +111,7 @@ module.exports = {
     return result;
   },
   
-  update: async (locationId, name, address, located_at) => {
+  update: async (locationId, name, address, located_at, cuisineId, priceId) => {
     //The result object is where we will put the result to be sent to th client.
     let result = {
       message: null,
@@ -129,6 +133,8 @@ module.exports = {
     location.name = name;
     location.address = address;
     location.located_at = located_at;
+    location.cuisineId = cuisineId;
+    location.priceId = priceId;
 
     await location.save(); // update the location
     result.data = location;

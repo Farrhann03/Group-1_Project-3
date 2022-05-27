@@ -22,26 +22,28 @@ class LocationController {
     res.json({ message, data });
   }
 
-  // async offboard(req, res) {
-  //   const { priceId, cuisineId, locationId } = req.body;
+  async offboard(req, res) {
+    const { locationId, cuisineId, priceId } = req.body;
 
-  //   if (typeof priceId !== "number" || typeof cuisineId !== "number" || typeof locationId !== "number") {
-  //     res.status(400);
-  //     return res.send("priceId , cuisineId and locationId need to be integers.");
-  //   }
+    if (typeof locationId !== "number") {
+      res.status(400);
+      return res.send("priceId , cuisineId and locationId need to be integers.");
+    }
 
-  //     const { status, data, message } = await locationService.offboard(
-  //     locationId,
+      const { status, data, message } = await locationService.offboard(
+        locationId,
+        cuisineId,
+        priceId,
 
-  //   );
-  //   res.status(status);
+    );
+    res.status(status);
 
-  //   res.json({ message, data });
+    res.json({ message, data });
 
-  // }
+  }
 
   async update(req, res) {
-    const { locationId, name, address, located_at } = req.body;
+    const { locationId, name, address, located_at, cuisineId, priceId } = req.body;
     if (
       typeof locationId !== "number" ||
       typeof name !== "string" ||
@@ -56,7 +58,9 @@ class LocationController {
       locationId,
       name,
       address,
-      located_at
+      located_at,
+      cuisineId,
+      priceId
     );
     res.status(status);
 
@@ -64,41 +68,22 @@ class LocationController {
   }
 
   async create(req, res) {
-    const {locationId, name, address, located_at, cuisineId, priceId} = req.body;
-    if(typeof locationId !== "number" || typeof name !== "string" || typeof address !== "string" || typeof located_at !== "string"){
+    const { locationId, name, address, located_at, cuisineId, priceId} = req.body;
+    if(typeof name !== "string" || typeof address !== "string" || typeof located_at !== "string"){
       res.status(400);
       return res.send("Incorrect request data");
-  }
+    }
       // Make sure the sequence is the same as in location.
-      const { status, data, message } = await locationService.create(
+      const { status, data, message } = 
+      await locationService.create(
       locationId,
       name,
       address,
       located_at,
       cuisineId,
-      priceId,
-    );
-    res.status(status);
+      priceId
 
-    res.json({ message, data });
-
-  }
-
-  async create(req, res) {
-    const {locationId, name, address, located_at, cuisineId, priceId} = req.body;
-    if(typeof locationId !== "number" || typeof name !== "string" || typeof address !== "string" || typeof located_at !== "string"){
-      res.status(400);
-      return res.send("Incorrect request data");
-  }
-      // Make sure the sequence is the same as in location.
-      const { status, data, message } = await locationService.create(
-      locationId,
-      name,
-      address,
-      located_at,
-      cuisineId,
-      priceId,
-    );
+      );
     res.status(status);
 
     res.json({ message, data });

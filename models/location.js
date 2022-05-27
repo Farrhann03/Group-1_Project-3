@@ -25,22 +25,22 @@ module.exports = function (sequelize){
       cuisineId: {
         //(FK)
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         field: "cuisine_id",
       },
       priceId: {
         //(FK)
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         field: "price_id",
       },
       createdAt: {
           type: DataTypes.DATE,
-          field: "created_at",
+          field: "createdAt",
       },
       updatedAt: {
           type: DataTypes.DATE,
-          field: "updated_at",
+          field: "updatedAt",
       },
     },
     {
