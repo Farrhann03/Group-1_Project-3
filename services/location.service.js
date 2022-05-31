@@ -1,88 +1,89 @@
-const { Location, Cuisine, Price } = require("../models");
+const { Location } = require("../models");
+//const { Cuisine, Price } = require("../models");
 
 module.exports = {
-  onboard: async (locationId, cuisineId, priceId) => {
-    let result = {
-      message: null,
-      status: null,
-      data: null,
-    };
-    const location = await Location.findByPk(locationId);
-    const cuisine = await Cuisine.findByPk(cuisineId);
-    const price = await Price.findByPk(priceId);
-    console.log("Location", location, "Cuisine", cuisine, "Price", price);
+  // onboard: async (locationId, cuisineId, priceId) => {
+  //   let result = {
+  //     message: null,
+  //     status: null,
+  //     data: null,
+  //   };
+  //   const location = await Location.findByPk(locationId);
+  //   const cuisine = await Cuisine.findByPk(cuisineId);
+  //   const price = await Price.findByPk(priceId);
+  //   console.log("Location", location, "Cuisine", cuisine, "Price", price);
 
-    if (!location) {
-      result.message = `Location ID ${location.Id} is not found.`;
-      result.status = 404;
-      return result;
-    }
+  //   if (!location) {
+  //     result.message = `Location ID ${location.Id} is not found.`;
+  //     result.status = 404;
+  //     return result;
+  //   }
 
-    if (location.cuisineId) {
-      result.message = `Location ID ${location.id} is already in use.`;
-      result.status = 400;
-      result.data = location;
-      return result;
-    }
+  //   if (location.cuisineId) {
+  //     result.message = `Location ID ${location.id} is already in use.`;
+  //     result.status = 400;
+  //     result.data = location;
+  //     return result;
+  //   }
 
-    if (location.priceId) {
-      result.message = `Location ID ${location.id} is already in use.`;
-      result.status = 400;
-      result.data = location;
-      return result;
-    }
+  //   if (location.priceId) {
+  //     result.message = `Location ID ${location.id} is already in use.`;
+  //     result.status = 400;
+  //     result.data = location;
+  //     return result;
+  //   }
 
-    if (!cuisine) {
-      result.message = `cuisine ID ${cuisine} is not found.`;
-      result.status = 404;
-      return result;
-    }
+  //   if (!cuisine) {
+  //     result.message = `cuisine ID ${cuisine} is not found.`;
+  //     result.status = 404;
+  //     return result;
+  //   }
 
-    if (!price) {
-      result.message = `Price ID ${price} is not found.`;
-      result.status = 404;
-      return result;
-    }
+  //   if (!price) {
+  //     result.message = `Price ID ${price} is not found.`;
+  //     result.status = 404;
+  //     return result;
+  //   }
 
-    location.cuisineId = cuisine.id;
-    await location.save();
+  //   location.cuisineId = cuisine.id;
+  //   await location.save();
 
-    location.priceId = price.id;
-    await location.save();
+  //   location.priceId = price.id;
+  //   await location.save();
 
-    result.data = location;
-    result.status = 200;
-    result.message = "Onboard successful";
+  //   result.data = location;
+  //   result.status = 200;
+  //   result.message = "Onboard successful";
 
-    return result;
-  },
+  //   return result;
+  // },
 
-  offboard: async (locationId) => {
-    let result = {
-      message: null,
-      status: null,
-      data: null,
-    };
-    const location = await Location.findByPk(locationId);
-    console.log("location", location);
+  // offboard: async (locationId) => {
+  //   let result = {
+  //     message: null,
+  //     status: null,
+  //     data: null,
+  //   };
+  //   const location = await Location.findByPk(locationId);
+  //   console.log("location", location);
 
-    if (!location) {
-        result.message = `Location ID ${locationId} is not found.`;
-        result.status = 404;
-        return result;
-      }
+  //   if (!location) {
+  //       result.message = `Location ID ${locationId} is not found.`;
+  //       result.status = 404;
+  //       return result;
+  //     }
 
-    location.cuisineId = null;
-    location.priceId = null;
-    await location.save();
+  //   location.cuisineId = null;
+  //   location.priceId = null;
+  //   await location.save();
 
-    result.data = location;
-    result.status = 200;
-    result.message = "Offboard successful";
+  //   result.data = location;
+  //   result.status = 200;
+  //   result.message = "Offboard successful";
 
-    return result;
+  //   return result;
 
-  },
+  // },
 
   create: async (locationId, name, address, located_at, cuisineId, priceId) => {
     //The result object is where we will put the result to be sent to th client.

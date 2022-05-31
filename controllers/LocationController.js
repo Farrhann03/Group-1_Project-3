@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const locationService = require("../services/location.service");
 
 class LocationController {
@@ -113,5 +114,6 @@ class LocationController {
     res.json({ message, data });
   }
 }
+
 
 module.exports = LocationController;
