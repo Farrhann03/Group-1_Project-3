@@ -20,23 +20,18 @@ router.get("/public/location", async (req, res) => {
   }
 });
 
-router.get("/public/location", async (req, res) => {
+
+router.get("/public/location/:located_at", async (req, res) => {
   try{
     const results = 
     await Location.findAll({
-       where:  { id: req.params.id }
-        //  located_at:{
-        //    [Op.or]: [].concat(req.query.located_at)
-        //  }
-       }
-    );
+      where: { located_at: req.params.located_at }
+    });
     console.table(JSON.parse(JSON.stringify(results)));
     return res.send(JSON.stringify(results));
   }catch (err) {
     console.log(err);
-  }
-});
-
-
+    }
+  });
 
 module.exports = router;
