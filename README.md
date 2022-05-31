@@ -40,3 +40,7 @@ YARC:  http://localhost:3000/user/cuisineId/<id number>  (DELETE)
 
 Delete priceId (Do take note that if you try this, the actual data will be deleted from db.)
 YARC:  http://localhost:3000/user/cuisineId/<id number>  (DELETE)
+
+Filter restaurants location 
+YARC: http://localhost:3000/public/location/East (Get)
+change the last field to either North, South, East, West, Central to get locations.
