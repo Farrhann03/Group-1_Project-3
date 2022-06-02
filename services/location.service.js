@@ -69,6 +69,9 @@ module.exports = {
       data: null,
     };
 
+    const location = Driver.findByPk(locationId);
+    console.log("Location", location)
+
     await Location.destroy({ where: { id: locationId } });
 
     result.data = location;
