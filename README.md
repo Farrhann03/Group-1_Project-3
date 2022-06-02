@@ -28,6 +28,8 @@ payload: (example) Please use an actual address cos this writes into the databas
     "priceId": 1
   }
 
-Filter restaurants location 
-YARC: http://localhost:3000/public/location/East (Get)
-change the last field to either North, South, East, West, Central to get locations.
+Filter restaurants based on location, cuisine type and price 
+YARC: http://localhost:3000/public/location/East/Muslim/$$ (Get)
+change the first field to either North, South, East, West, Central to get locations.
+change the second field to either Western, Muslim, Indian, Chinese, Thai, Japanese, Korean to get cuisine type.
+change the last field to either $, $$, $$$, $$$$, $$$$$ to get price range.
