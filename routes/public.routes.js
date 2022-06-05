@@ -21,16 +21,21 @@ router.get("/public/location", async (req, res) => {
 });
 
 
-router.get("/public/location/:located_at", async (req, res) => {
+router.get("/public/location/:located_at/:cuisineId/:priceId", async (req, res) => {
   try{
     const results = 
     await Location.findAll({
-      where: { located_at: req.params.located_at }
-    });
+      where: { 
+        [Op.and]: [
+          {located_at: req.params.located_at},  
+          {cuisineId : req.params.cuisineId} ,
+          {priceId : req.params.priceId}
+    ]}});
     console.table(JSON.parse(JSON.stringify(results)));
     return res.send(JSON.stringify(results));
   }catch (err) {
     console.log(err);
+    return ("No such restaurant available");
     }
   });
 

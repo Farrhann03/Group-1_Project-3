@@ -13,29 +13,12 @@ const sequelize = new Sequelize('d7r4o5vvh2upn9', 'bimumvggwjprjc', '1d670fcd93a
 );
 
 const Location = require("./location")(sequelize);
-const Cuisine = require("./cuisine")(sequelize);
-const Price = require("./price")(sequelize);
 const User = require('./user')(sequelize);
-
-Location.belongsTo(Cuisine, {
-  foreignKey: "cuisineId",
-});
-Location.belongsTo(Price, {
-  foreignKey: "priceId",
-});
-
-Location.belongsTo(Cuisine, {
-  foreignKey: "cuisineId",
-});
-Location.belongsTo(Price, {
-  foreignKey: "priceId",
-});
-
 
 module.exports = {
   sequelize,
   Location,
-  Cuisine,
-  Price,
+  //Cuisine,
+  //Price,
   User,
 };
