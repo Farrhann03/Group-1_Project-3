@@ -18,7 +18,5 @@ const User = require('./user')(sequelize);
 module.exports = {
   sequelize,
   Location,
-  //Cuisine,
-  //Price,
   User,
 };

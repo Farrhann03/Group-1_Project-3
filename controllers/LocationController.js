@@ -2,7 +2,7 @@ const res = require("express/lib/response");
 const locationService = require("../services/location.service");
 
 class LocationController {
-
+  
   async update(req, res) {
     const { locationId, name, address, located_at, cuisineId, priceId } = req.body;
     if (
