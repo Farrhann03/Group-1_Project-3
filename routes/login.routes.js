@@ -5,9 +5,11 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth.config');
+const app = express(); 
 const cors = require('cors');
 
 
+app.use(express.json());
 app.use(cors());
 
 router.get("/login", (req, res) => {
