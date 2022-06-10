@@ -5,6 +5,10 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth.config');
+const cors = require('cors');
+
+
+app.use(cors());
 
 router.get("/login", (req, res) => {
   return res.send("You have called a login route");
