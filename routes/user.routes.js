@@ -8,7 +8,7 @@ router.get("/user", (req, res) => {
   return res.send("You have called a user route");
 });
 
-
+router.post("/user/newreview", locationController.create);
 router.post("/user/newlocation", locationController.create);
 router.put("/user/location", locationController.update);
 router.delete("/user/location/:locationId", locationController.delete);
