@@ -5,8 +5,26 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth.config');
+const app = express(); 
+const cors = require('cors');
+
+
+//app.use(express.json());
+app.use(cors());
 
 router.get("/login", (req, res) => {
+  return res.send("You have called a login route");
+});
+
+router.get("/login/user", async (req, res) => {
+  try{
+    const results = 
+    await User.findAll();
+    console.table(JSON.parse(JSON.stringify(results)));
+    return res.send(JSON.stringify(results));
+  }catch (err) {
+    console.log(err);
+  }
   return res.send("You have called a login route");
 });
 

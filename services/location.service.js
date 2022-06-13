@@ -1,4 +1,4 @@
-const { Location, Cuisine, Price } = require("../models");
+const { Location , Review } = require("../models");
 
 module.exports = {
 
@@ -23,6 +23,29 @@ module.exports = {
 
     await newLocation.save(); // update the location
     result.data = newLocation;
+    result.status = 200;
+    result.message = "Update successful";
+
+    return result;
+  },
+
+  
+  create: async (reviewId, review) => {
+    //The result object is where we will put the result to be sent to th client.
+    let result = {
+      message: null,
+      status: null,
+      data: null,
+    };
+
+    //Look for the review and in the database.
+    const newReview = await Review.create({
+        reviewId: reviewId,
+        review: review,
+      });
+
+    await newReview.save(); // update the review
+    result.data = newReview;
     result.status = 200;
     result.message = "Update successful";
 
@@ -68,6 +91,9 @@ module.exports = {
       status: null,
       data: null,
     };
+
+    const location = Driver.findByPk(locationId);
+    console.log("Location", location)
 
     await Location.destroy({ where: { id: locationId } });
 

@@ -13,10 +13,12 @@ const sequelize = new Sequelize('d7r4o5vvh2upn9', 'bimumvggwjprjc', '1d670fcd93a
 );
 
 const Location = require("./location")(sequelize);
+const Review = require('./review')(sequelize);
 const User = require('./user')(sequelize);
 
 module.exports = {
   sequelize,
   Location,
-  User,
+  Review,
+  User
 };

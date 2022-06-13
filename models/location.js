@@ -23,13 +23,11 @@ module.exports = function (sequelize){
         allowNull: false,
       },
       cuisineId: {
-        //(FK)
         type: DataTypes.STRING,
         allowNull: true,
         field: "cuisine_id",
       },
       priceId: {
-        //(FK)
         type: DataTypes.STRING,
         allowNull: true,
         field: "price_id",
