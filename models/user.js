@@ -26,6 +26,7 @@ module.exports = function (sequelize) {
     },
     {
       sequelize,
+      freezeTableName: "user",
       modelName: "user",
     }
   );
