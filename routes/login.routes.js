@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/auth.config');
 const app = express(); 
 const cors = require('cors');
+const { Sequelize } = require("sequelize");
+const Op = Sequelize.Op;
 
 
 //app.use(express.json());
