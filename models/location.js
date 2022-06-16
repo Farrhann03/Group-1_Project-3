@@ -37,6 +37,11 @@ module.exports = function (sequelize){
         allowNull: false,
         field: "opening_hour",
       },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        field: "image",
+      },
       createdAt: {
           type: DataTypes.DATE,
           field: "createdAt",
