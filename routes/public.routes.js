@@ -30,17 +30,17 @@ router.get("/public/reviews", async (req, res) => {
 });
 
 router.get(
-  "/public/location/:located_at",
+  "/public/location/:located_at/:cuisineId/:priceId",
   async (req, res) => {
     try {
       const results = await Location.findAll({
-        where: { located_at: req.params.located_at }
-        //   [Op.and]: [
-        //     { located_at: req.params.located_at },
-        //     { cuisineId: req.params.cuisineId },
-        //     { priceId: req.params.priceId },
-        //   ],
-        // },
+        where: {
+          [Op.and]: [
+            { located_at: req.params.located_at },
+            { cuisineId: req.params.cuisineId },
+            { priceId: req.params.priceId },
+            ],
+        },
       });
       console.table(JSON.parse(JSON.stringify(results)));
       return res.send(JSON.stringify(results));
