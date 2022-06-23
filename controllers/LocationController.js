@@ -4,12 +4,13 @@ const locationService = require("../services/location.service");
 class LocationController {
   
   async update(req, res) {
-    const { locationId, name, address, located_at, cuisineId, priceId } = req.body;
+    const { locationId, name, address, located_at, cuisineId, priceId, openingHour, image } = req.body;
     if (
       typeof locationId !== "number" ||
       typeof name !== "string" ||
       typeof address !== "string" ||
-      typeof located_at !== "string"
+      typeof located_at !== "string" ||
+      typeof openingHour !== "string" 
     ) {
       res.status(400);
       return res.send("Incorrect request data");
@@ -21,7 +22,9 @@ class LocationController {
       address,
       located_at,
       cuisineId,
-      priceId
+      priceId,
+      openingHour,
+      image
     );
     res.status(status);
 
@@ -29,7 +32,7 @@ class LocationController {
   }
 
   async create(req, res) {
-    const { locationId, name, address, located_at, cuisineId, priceId} = req.body;
+    const { locationId, name, address, located_at, cuisineId, priceId, openingHour, image} = req.body;
     if(typeof name !== "string" || typeof address !== "string" || typeof located_at !== "string"){
       res.status(400);
       return res.send("Incorrect request data");
@@ -42,7 +45,9 @@ class LocationController {
       address,
       located_at,
       cuisineId,
-      priceId
+      priceId,
+      openingHour,
+      image
 
       );
     res.status(status);

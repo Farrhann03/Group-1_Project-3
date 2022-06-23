@@ -2,7 +2,7 @@ const { Location , Review } = require("../models");
 
 module.exports = {
 
-  create: async (locationId, name, address, located_at, cuisineId, priceId) => {
+  create: async (locationId, name, address, located_at, cuisineId, priceId, openingHour, image) => {
     //The result object is where we will put the result to be sent to th client.
     let result = {
       message: null,
@@ -17,7 +17,9 @@ module.exports = {
         address: address,
         located_at: located_at,
         cuisineId : cuisineId,
-        priceId: priceId
+        priceId: priceId,
+        openingHour: openingHour,
+        image: image
         
       });
 
@@ -52,7 +54,7 @@ module.exports = {
     return result;
   },
   
-  update: async (locationId, name, address, located_at, cuisineId, priceId) => {
+  update: async (locationId, name, address, located_at, cuisineId, priceId, openingHour, image) => {
     //The result object is where we will put the result to be sent to th client.
     let result = {
       message: null,
@@ -76,6 +78,9 @@ module.exports = {
     location.located_at = located_at;
     location.cuisineId = cuisineId;
     location.priceId = priceId;
+    location.openingHour = openingHour;
+    location.image = image;
+
 
     await location.save(); // update the location
     result.data = location;
@@ -92,7 +97,7 @@ module.exports = {
       data: null,
     };
 
-    const location = Driver.findByPk(locationId);
+    const location = Location.findByPk(locationId);
     console.log("Location", location)
 
     await Location.destroy({ where: { id: locationId } });

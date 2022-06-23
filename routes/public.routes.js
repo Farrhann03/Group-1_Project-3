@@ -39,7 +39,7 @@ router.get(
             { located_at: req.params.located_at },
             { cuisineId: req.params.cuisineId },
             { priceId: req.params.priceId },
-          ],
+            ],
         },
       });
       console.table(JSON.parse(JSON.stringify(results)));
