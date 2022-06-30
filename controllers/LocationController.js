@@ -1,4 +1,3 @@
-const res = require("express/lib/response");
 const locationService = require("../services/location.service");
 
 class LocationController {

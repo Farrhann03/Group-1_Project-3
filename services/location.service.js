@@ -3,7 +3,7 @@ const { Location , Review } = require("../models");
 module.exports = {
 
   create: async (locationId, name, address, located_at, cuisineId, priceId, openingHour, image) => {
-    //The result object is where we will put the result to be sent to the client.
+    //The result object is where we will put the result to be sent to th client.
     let result = {
       message: null,
       status: null,
