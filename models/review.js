@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const { Location } = require("./location");
 const { User } = require("./user");
+const location = require("./location");
 
 module.exports = function (sequelize){
   class Review extends Model {}
@@ -12,14 +13,14 @@ module.exports = function (sequelize){
         primaryKey: true,
         autoIncrement: true,
       },
-      locationId: {
+      location_id: {
         type: DataTypes.INTEGER,
         references: {
           model: Location,
           key: 'id'
         }
       },
-      userId: {
+      user_id: {
         type: DataTypes.INTEGER,
         references: {
           model: User,
