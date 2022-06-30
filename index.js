@@ -1,7 +1,6 @@
 const app = require('./routes');
 const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-const path = require('path');
 const cors = require('cors');
 
 

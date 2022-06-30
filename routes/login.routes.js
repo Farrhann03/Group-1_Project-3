@@ -11,7 +11,6 @@ const { Sequelize } = require("sequelize");
 const Op = Sequelize.Op;
 
 
-//app.use(express.json());
 app.use(cors());
 
 router.get("/login", (req, res) => {
@@ -117,4 +116,5 @@ router.post("/login/signin", async (req, res) => {
       res.status(500).send({ message: err.message });
     });
 });
+
 module.exports = router;
