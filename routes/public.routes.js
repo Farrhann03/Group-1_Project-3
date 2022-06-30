@@ -41,7 +41,6 @@ router.get("/public/review/:location_id", async (req, res) => {
   }
 });
 
-
 router.get(
   "/public/location/:located_at/:cuisineId/:priceId",
   async (req, res) => {
