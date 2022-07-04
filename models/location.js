@@ -39,7 +39,7 @@ module.exports = function (sequelize){
       },
       image: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
         field: "image",
       },
       createdAt: {
