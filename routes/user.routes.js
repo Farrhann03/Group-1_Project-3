@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { Location } = require("../models");
 const LocationController = require("../controllers/LocationController");
+const ReviewController = require("../controllers/ReviewController");
 
 const locationController = new LocationController();
+const reviewController = new ReviewController();
 
 router.get("/user", (req, res) => {
   return res.send("You have called a user route");
@@ -24,7 +26,8 @@ router.get(
   }
 );
 
-router.post("/user/newreview", locationController.create);
+router.post("/user/newreview", reviewController.create);
+
 router.post("/user/newlocation", locationController.create);
 router.put("/user/location", locationController.update);
 router.delete("/user/location/:locationId", locationController.delete);

@@ -33,7 +33,15 @@ class LocationController {
 
   async create(req, res) {
     const { locationId, name, address, located_at, cuisineId, priceId, openingHour, image} = req.body;
-    if(typeof name !== "string" || typeof address !== "string" || typeof located_at !== "string"){
+    if(
+      typeof name !== "string" || 
+      typeof address !== "string" || 
+      typeof located_at !== "string" || 
+      typeof cuisineId !== "string" || 
+      typeof priceId !== "string" || 
+      typeof openingHour !== "string" || 
+      typeof image !== "string"
+      ){
       res.status(400);
       return res.send("Incorrect request data");
     }

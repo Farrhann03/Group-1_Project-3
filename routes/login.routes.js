@@ -76,7 +76,7 @@ router.post("/login/signup", async (req, res) => {
       email: newUser.email,
       password: newUser.hash,
     }).then(() => {
-      res.send("New user is created!");
+      res.status(200).send({ message: "New user is created!" });
     });
   });
 });
@@ -115,6 +115,17 @@ router.post("/login/signin", async (req, res) => {
     .catch((err) => {
       res.status(500).send({ message: err.message });
     });
+});
+
+router.get("/login/signout", function(req, res, next) {
+  // remove the req.user property and clear the login session
+  req.logout();
+
+  // destroy session data
+  req.session = null;
+
+  // redirect to homepage
+  res.redirect('/');
 });
 
 module.exports = router;

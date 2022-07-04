@@ -16,40 +16,15 @@ module.exports = {
         name: name,
         address: address,
         located_at: located_at,
-        cuisineId : cuisineId,
+        cuisineId: cuisineId,
         priceId: priceId,
         openingHour: openingHour,
-        image: image
+        image: image,
         
       });
 
     await newLocation.save(); // update the location
     result.data = newLocation;
-    result.status = 200;
-    result.message = "Update successful";
-
-    return result;
-  },
-
-  
-  create: async (reviewId, location_id, user_id, review) => {
-    //The result object is where we will put the result to be sent to th client.
-    let result = {
-      message: null,
-      status: null,
-      data: null,
-    };
-
-    //Look for the review and in the database.
-    const newReview = await Review.create({
-        reviewId: reviewId,
-        location_id: location_id,
-        user_id: user_id,
-        review: review,
-      });
-
-    await newReview.save(); // update the review
-    result.data = newReview;
     result.status = 200;
     result.message = "Update successful";
 
