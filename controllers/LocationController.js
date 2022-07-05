@@ -33,7 +33,6 @@ class LocationController {
 
   async create(req, res) {
     const { locationId, name, address, located_at, cuisineId, priceId, openingHour, image} = req.body;
-    console.log(req.body)
     if(
       typeof name !== "string" || 
       typeof address !== "string" || 
@@ -62,7 +61,6 @@ class LocationController {
       );
     
     res.status(status);
-    
     res.json({ message, data });
     
   }
