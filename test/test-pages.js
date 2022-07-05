@@ -107,27 +107,28 @@ describe('/GET all reviews', () => {
 //   });
 // });
 
-// // describe("/POST a restaurant location", () => {
-// //   it("it should POST a new restaurant location", (done) => {
-// //     let myRestaurant = {
-// //       "name": "Keria Japanese Restaurant",
-// //       "address": "5 Koek Road #B1-28 Cuppage Plaza Singapore 228697",
-// //       "located_at": "Central",
-// //       "cusisineId": "Japanese",
-// //       "priceId": "$$$",
-// //       "openingHour": "6pm to 10.30pm",
-// //       "image": "null"
-// //     };
-// //     chai.request(server)
-// //       .post("/user/newlocation")
-// //       .send(myRestaurant)
-// //       .end((err, res) => {
-// //         res.should.have.status(200);
-// //         res.body.should.be.a("object");
-// //         res.body.should.have
-// //           .property("message")
-// //           .eql("Update successful");
-// //       done();
-// //     });
-// //   });
-// // });
+describe("/POST a restaurant location", () => {
+  it("it should POST a new restaurant location", (done) => {
+    let myRestaurant = {
+      "name": "Keria Japanese Restaurant",
+      "address": "5 Koek Road #B1-28 Cuppage Plaza Singapore 228697",
+      "located_at": "Central",
+      "cusisineId": "Japanese",
+      "priceId": "$$$",
+      "openingHour": "6pm to 10.30pm",
+      "image": "null"
+    };
+    chai.request(server)
+      .post("/user/newlocation")
+      .send(myRestaurant)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a("object");
+        res.body.should.have
+          .property("message")
+          .eql("Update successful");
+      done();
+      console.log(myRestaurant)
+    });
+  });
+});
