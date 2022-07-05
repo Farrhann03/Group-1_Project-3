@@ -117,15 +117,7 @@ router.post("/login/signin", async (req, res) => {
     });
 });
 
-router.get("/login/signout", function(req, res, next) {
-  // remove the req.user property and clear the login session
-  req.logout();
 
-  // destroy session data
-  req.session = null;
 
-  // redirect to homepage
-  res.redirect('/');
-});
 
 module.exports = router;

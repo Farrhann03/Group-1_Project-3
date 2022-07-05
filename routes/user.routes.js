@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Location } = require("../models");
+const { User } = require("../models")
 const LocationController = require("../controllers/LocationController");
 const ReviewController = require("../controllers/ReviewController");
 
@@ -25,6 +26,14 @@ router.get(
     }
   }
 );
+
+router.post("/user/signout", function(req, res) {
+
+  res.status(200).send({
+
+    accessToken : null,
+  });
+});
 
 router.post("/user/newreview", reviewController.create);
 
