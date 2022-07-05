@@ -1,4 +1,4 @@
-const { Location , Review } = require("../models");
+const { Location } = require("../models/");
 
 module.exports = {
 
