@@ -21,10 +21,11 @@ router.get(
       });
       console.table(JSON.parse(JSON.stringify(results)));
       return res.send(JSON.stringify(results));
+
     } catch (err) {
-      console.log(err);
-    }
-  }
+        res.status(404).send("Location ID not found");
+    } 
+  } 
 );
 
 router.post("/user/signout", function(req, res) {
