@@ -1,5 +1,5 @@
 const chai = require('chai');
-const server = "http://localhost:5000";
+const server = "https://supper-makan-apa.herokuapp.com";
 const chaiHttp = require('chai-http');
 const { describe } = require('mocha');
 const expect = require("chai").expect;
