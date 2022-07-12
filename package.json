@@ -4,7 +4,7 @@
   "description": "Supper Makan Apa?",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "SET NODE_ENV=dev && nodemon index.js",
     "test": "mocha --timeout 15000"
   },
   "repository": {
@@ -21,6 +21,7 @@
   "dependencies": {
     "@heroku/buildpack-registry": "^1.0.1",
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",

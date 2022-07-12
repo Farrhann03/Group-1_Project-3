@@ -5,7 +5,6 @@ const { describe } = require('mocha');
 const expect = require("chai").expect;
 const request = require("supertest", "request");
 var should = chai.should();
-const { Location } = require("../models");
 
 chai.use(chaiHttp);
 
@@ -39,8 +38,66 @@ describe("LOCATIONS", () => {
         expect(location.image).to.be.a("string");
       })
     })
+
+  describe('/GET location/:id', () => {
+    it('should query one individual restaurant', async () => {
+      const res = await request(`${server}`) 
+        .get(`/user/location/`+ 18)
+        .expect(200);
+  
+      const indRestaurants = res.body;
+      expect(indRestaurants).to.be.an('object');
+  
+      Array.from(indRestaurants).forEach(indRestaurant => {
+        expect(indRestaurant.name).to.be.a("string");
+        expect(indRestaurant.address).to.be.a("string");
+        expect(indRestaurant.located_at).to.be.a("string");
+        expect(indRestaurant.cuisineId).to.be.a("string");
+        expect(indRestaurant.priceId).to.be.a("string");
+        expect(indRestaurant.openingHour).to.be.a("string");
+        expect(indRestaurant.image).to.be.a("string");
+  
+      })
+    })
+  
+      it("it should query an NON EXISTED restaurant",  async () => {
+        const res = await request(`${server}`) 
+          .get(`/user/location/`+ 24)
+
+        const indRestaurants = res.body;
+        expect(indRestaurants).to.be.an('object');
+
+      });
   })
-})
+
+  // describe("/POST a restaurant location", () => {
+  //   it("it should POST a new restaurant location", (done) => {
+  //     let myRestaurant = {
+  //       "name": "Superstar K",
+  //       "address": "75 Tanjong Pagar Road Singapore 088496",
+  //       "located_at": "South",
+  //       "cuisineId": "Korean",
+  //       "priceId": "$$$",
+  //       "openingHour": "11am to 2am",
+  //       "image": "https://sethlui.com/wp-content/uploads/2014/11/supper-listicle-14.jpg"
+  //     };
+  //       chai.request(server)
+  //         .post("/user/newlocation")
+  //         .send(myRestaurant)
+  //         .end((err, res) => {
+  //           res.should.have.status(200);
+  //           res.body.should.be.a("object");
+  //           res.body.should.have
+  //             .property("message")
+  //             .eql("Update successful");
+  //         done();
+  //         console.log(myRestaurant)
+  //       });
+  //     });
+  //  })
+  })
+});
+
 
 
 describe("USERS", () => {
@@ -49,7 +106,6 @@ describe("USERS", () => {
       const res = await request(`${server}`)
         .get(`/login/user`) 
         .expect(200);
-
 
       const users = res.body; 
       expect(users).to.be.an('object');
@@ -66,8 +122,8 @@ describe("USERS", () => {
   // describe("/POST a new user", () => {
   //   it("it should Register a new user", async (done) => {
   //     let myNewuser = {
-  //       "username": "Nancy",
-  //       "email": "nancy@hotmail.com",
+  //       "username": "Newton",
+  //       "email": "newton@hotmail.com",
   //       "password": "12345"
   //     };
   //     chai.request(server)
@@ -84,33 +140,13 @@ describe("USERS", () => {
   //   });
   // });
 
-  describe("/POST a signin user", () => {
-    it("it should be A SUCCESSFUL SIGNIN and ISSUE JWT token",  (done) => {
-      chai.request(server)
-        .post("/login/signin")
-        .send({
-          "username":"Annie",
-          "password":"12345"
-        })
-        .end((err, res) => {
-          //console.log("CHECK IS USER IN THE DATABASE");
-          res.should.have.status(200);
-          res.body.should.have.a("object");
-          res.body.should.have.property('id');
-          res.body.should.have.property('username');
-          res.body.should.have.property('email');
-          res.body.should.have.property('accessToken');
-        })
-      done();
-    });
-  });
 
   describe("/POST a signin user", () => {
     it("it should BE AN UNSUCCESSFUL LOGIN user",  (done) => {
       request(server)
         .post("/login/signin")
         .send({
-          "username":"Valerie",
+          "username":"Newton",
           "password":"12345"
         })
         .set('Accept', 'application/json')
@@ -124,7 +160,8 @@ describe("USERS", () => {
       done();
     });
   });
-})
+});
+
 
 describe("REVIEWS", () => {
   describe('/GET all reviews', () => {
@@ -162,63 +199,3 @@ describe("REVIEWS", () => {
 });
 
 
-// describe("/POST a restaurant location", () => {
-//   it("it should POST a new restaurant location", (done) => {
-//     let myRestaurant = {
-//       "name": "Superstar K",
-//       "address": "75 Tanjong Pagar Road Singapore 088496",
-//       "located_at": "South",
-//       "cuisineId": "Korean",
-//       "priceId": "$$$",
-//       "openingHour": "11am to 2am",
-//       "image": "https://sethlui.com/wp-content/uploads/2014/11/supper-listicle-14.jpg"
-//     };
-//     chai.request(server)
-//       .post("/user/newlocation")
-//       .send(myRestaurant)
-//       .end((err, res) => {
-//         res.should.have.status(200);
-//         res.body.should.be.a("object");
-//         res.body.should.have
-//           .property("message")
-//           .eql("Update successful");
-//       done();
-//       console.log(myRestaurant)
-//     });
-//   });
-// });
-
-// ************************** this is not working *******************************************
-// describe('/GET location/:id', () => {
-//   it('should query one individual restaurant', (done) => {
-//     let location = new Location (
-//       {
-//         "name": "Nana Original Thai Food",
-//         "address": "18 Clementi Road Singapore 129747",
-//         "located_at": "West",
-//         "cuisineId": "Thai",
-//         "priceId": "$$",
-//         "openingHour": "24 hours",
-//         "image": "https://placesingapore.com/uploads/webp/feature-nana-original-thai-food-singapore-fd12131.webp"
-//       }
-//     );
-//     location.save((err, location) => {
-//       chai.request(server) 
-//         .get('/user/location/'+location.id)
-//         .send(location)
-//         .end((err, res) => {
-//           res.body.should.have.property('name');
-//           res.body.should.have.property('address');
-//           res.body.should.have.property('located_at');
-//           res.body.should.have.property('cuisineId');
-//           res.body.should.have.property('priceId');
-//           res.body.should.have.property('openingHour');
-//           res.body.should.have.property('image');
-//           res.body.should.have.property('createdAt');
-//           res.body.should.have.property('updatedAt');
-//           res.body.should.have.property('_id').eql(location.id);
-//         done();
-//       })
-//     })
-//   })
-// })
