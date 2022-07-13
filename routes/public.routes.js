@@ -19,6 +19,22 @@ router.get("/public/location", async (req, res) => {
   }
 });
 
+router.get(
+  "/public/location/:name",
+  async (req, res) => {
+    try {
+      const results = await Location.findAll({
+        where: { name: req.params.name }
+      });
+      console.table(JSON.parse(JSON.stringify(results)));
+      return res.send(JSON.stringify(results));
+
+    } catch (err) {
+        res.status(404).send("Restaurant name not found");
+    } 
+  } 
+);
+
 router.get("/public/review", async (req, res) => {
   try {
     const results = await Review.findAll();
