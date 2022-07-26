@@ -1,11 +1,12 @@
 const { Model, DataTypes } = require("sequelize");
 const { Location } = require("./location");
 const { User } = require("./user");
+const location = require("./location");
 
 module.exports = function (sequelize){
-  class Review extends Model {}
+  class Favorite extends Model {}
 
-  Review.init(
+  Favorite.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -26,10 +27,6 @@ module.exports = function (sequelize){
           key: 'id'
         }
       },
-      review: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       createdAt: {
           type: DataTypes.DATE,
           field: "createdAt",
@@ -41,10 +38,10 @@ module.exports = function (sequelize){
     },
     {
       sequelize,
-      tableName: "review",
-      modelName: "Review",
+      tableName: "favorite",
+      modelName: "Favorite",
     }
   );
 
-  return Review;
+  return Favorite;
 };
