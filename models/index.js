@@ -17,15 +17,20 @@ const sequelize = new Sequelize('d3fpq27b46ct8n', 'gxfycuowlyjazp', 'b3b4c032a56
 const Location = require("./location")(sequelize);
 const Review = require('./review')(sequelize);
 const User = require('./user')(sequelize);
+const Favorite = require('./favorite')(sequelize);
 
 // Create associations
 User.belongsToMany(Location, { through: 'review' });
 Location.belongsToMany(User, { through: 'review' });
+
+User.belongsToMany(Location, { through: 'favorite' });
+Location.belongsToMany(User, { through: 'favorite' });
 
 
 module.exports = {
   sequelize,
   Location,
   Review,
-  User
+  User,
+  Favorite
 };
