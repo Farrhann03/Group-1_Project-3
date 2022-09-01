@@ -8,6 +8,11 @@ const { sequelize } = require('../models');
 const locationController = new LocationController();
 const reviewController = new ReviewController();
 const favoriteController = new FavoriteController();
+app.use(express.json()); // Enable express to parse JSON as request body.
+const cors = require('cors');
+
+
+app.use(cors());
 
 router.get("/user", (req, res) => {
   return res.send("You have called a user route");
