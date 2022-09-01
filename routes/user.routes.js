@@ -1,4 +1,5 @@
 const express = require("express");
+const app = express();
 const router = express.Router();
 const { Location, Favorite, User } = require("../models");
 const LocationController = require("../controllers/LocationController");
