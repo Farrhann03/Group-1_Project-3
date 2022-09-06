@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../models");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config");
@@ -36,6 +36,7 @@ router.post("/login/signin", async (req, res) => {
   User.findOne({
     where: {
       username: req.body.username,
+      
     },
   })
     .then((user) => {
@@ -43,8 +44,8 @@ router.post("/login/signin", async (req, res) => {
         return res.status(404).send({ message: "User Not found." });
       }
 
-      var passwordIsValid = bcrypt.compare(req.body.password, user.password);
-
+      var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+    
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,

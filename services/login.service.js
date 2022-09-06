@@ -22,5 +22,6 @@ module.exports = {
     result.message = "New user is created!";
 
     return result;
+    
   },
 };
