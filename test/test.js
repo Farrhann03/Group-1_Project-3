@@ -62,19 +62,19 @@ describe("LOCATIONS", () => {
       })
     })
 
-    it("it should query a NON EXISTED Restaurant",  (done) => {
-      request(server)
-        .get("/user/location/"+ 22)
-        .set('Accept', 'application/json')
-        .expect(404)
-        .expect('Content-Type', /json/)
-        .expect('message: Location ID not found')
-        .end((err, res) => {
-          //console.log("CHECK IS USER IN THE DATABASE");
-          res.should.have.status(404);
-        })
-        done();
-      })
+    // it("it should query a NON EXISTED Restaurant",  (done) => {
+    //   request(server)
+    //     .get("/user/location/"+ 22)
+    //     .set('Accept', 'application/json')
+    //     .expect(404)
+    //     .expect('Content-Type', /json/)
+    //     .expect('message: Location ID not found')
+    //     .end((err, res) => {
+    //       //console.log("CHECK IS USER IN THE DATABASE");
+    //       res.should.have.status(404);
+    //     })
+    //     done();
+    //   })
     })
 
   // describe("/POST a restaurant location", () => {
@@ -107,24 +107,24 @@ describe("LOCATIONS", () => {
 
 // ****************************  TEST USERS API  ********************************
 
-// describe("USERS", () => {
-//   describe('/GET all user content', () => {
-//     it("should list all users", async () => {
-//       const res = await request(`${server}`)
-//         .get(`/login/user`) 
-//         .expect(200);
+describe("USERS", () => {
+  describe('/GET all user content', () => {
+    it("should list all users", async () => {
+      const res = await request(`${server}`)
+        .get(`/login/user`) 
+        .expect(200);
 
-//       const users = res.body; 
-//       expect(users).to.be.an('object');
+      const users = res.body; 
+      expect(users).to.be.an('object');
 
-//       Array.from(users).forEach(user => {
-//         expect(user.username).to.be.a("string");
-//         expect(user.email).to.be.a("string");
-//         expect(user.password).to.be.a("string");
+      Array.from(users).forEach(user => {
+        expect(user.username).to.be.a("string");
+        expect(user.email).to.be.a("string");
+        expect(user.password).to.be.a("string");
           
-//       });
-//     });
-//   });
+      });
+    });
+  });
 
 //   // describe("/POST a new user", () => {
 //   //   it("it should Register a new user", async (done) => {
@@ -167,41 +167,41 @@ describe("LOCATIONS", () => {
 //       done();
 //     });
 //   });
-// });
+ });
 
 // *****************************  TEST REVIEWS API  ********************************
 
-// describe("REVIEWS", () => {
-//   describe('/GET all reviews', () => {
-//     it('should list all review contents', async () => {
-//       const res = await request(`${server}`) 
-//         .get(`/public/review`)
-//         .expect(200)
+describe("REVIEWS", () => {
+  describe('/GET all reviews', () => {
+    it('should list all review contents', async () => {
+      const res = await request(`${server}`) 
+        .get(`/public/review`)
+        .expect(200)
 
-//       const reviews = res.body;
-//         expect(reviews).to.be.an('object');
-//     })
+      const reviews = res.body;
+        expect(reviews).to.be.an('object');
+    })
 
-//   // describe("/POST review", () => {
-//   //   it("it should POST a review", (done) => {
-//   //     let myreview = {
-//   //       "location_id": 9,
-//   //       "user_id": 14,
-//   //       "review": "Authentic Korean food.  Nice environment to dine in.",
-//   //     };
-//   //     chai.request(server)
-//   //       .post("/user/newreview")
-//   //       .send(myreview)
-//   //       .end((err, res) => {
-//   //         res.should.have.status(200);
-//   //         res.body.should.be.a("object");
-//   //         res.body.should.have
-//   //           .property("message")
-//   //           .eql("Update successful");
-//   //       done();
-//   //     });
-//   //   });
-//   });
-// });
+  // describe("/POST review", () => {
+  //   it("it should POST a review", (done) => {
+  //     let myreview = {
+  //       "location_id": 9,
+  //       "user_id": 14,
+  //       "review": "Authentic Korean food.  Nice environment to dine in.",
+  //     };
+  //     chai.request(server)
+  //       .post("/user/newreview")
+  //       .send(myreview)
+  //       .end((err, res) => {
+  //         res.should.have.status(200);
+  //         res.body.should.be.a("object");
+  //         res.body.should.have
+  //           .property("message")
+  //           .eql("Update successful");
+  //       done();
+  //     });
+  //   });
+  });
+});
 
 
