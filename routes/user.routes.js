@@ -95,12 +95,12 @@ router.get(
 );
 
 
-
 router.post("/user/signout", function(req, res) {
   res.status(200).send({
     accessToken : null,
   });
 });
+
 
 router.post("/user/newreview", reviewController.create);
 
