@@ -36,7 +36,6 @@ router.post("/login/signin", async (req, res) => {
   User.findOne({
     where: {
       username: req.body.username,
-      
     },
   })
     .then((user) => {
@@ -44,8 +43,11 @@ router.post("/login/signin", async (req, res) => {
         return res.status(404).send({ message: "User Not found." });
       }
 
-      var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-    
+      var passwordIsValid = bcrypt.compareSync(
+        req.body.password,
+        user.password
+      );
+
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,

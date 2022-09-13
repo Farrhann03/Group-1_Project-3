@@ -19,9 +19,7 @@ router.get("/public/location", async (req, res) => {
   }
 });
 
-router.get(
-  "/public/location/:name",
-  async (req, res) => {
+router.get("/public/location/:name", async (req, res) => {
     try {
       const results = await Location.findAll({
         where: { name: req.params.name }
@@ -57,9 +55,7 @@ router.get("/public/review/:location_id", async (req, res) => {
   }
 });
 
-router.get(
-  "/public/location/:located_at/:cuisineId/:priceId",
-  async (req, res) => {
+router.get("/public/location/:located_at/:cuisineId/:priceId", async (req, res) => {
     try {
       const results = await Location.findAll({
         where: {
