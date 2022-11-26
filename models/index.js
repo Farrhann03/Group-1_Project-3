@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize('d3fpq27b46ct8n', 'gxfycuowlyjazp', 'b3b4c032a56be20bcc5410ea35a7faf487852a194ade5d44e6ec498b9f380e50', {
-    host: 'ec2-44-197-128-108.compute-1.amazonaws.com',
+const sequelize = new Sequelize('dbheroku', 'postgres', 'mypassword', {
+    host: 'mydatabase-1.ctgdayi97uhz.ap-southeast-1.rds.amazonaws.com',
     dialect: 'postgres',
     dialectOptions:{
       ssl: {

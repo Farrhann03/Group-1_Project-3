@@ -1,5 +1,5 @@
 const chai = require('chai');
-const server = "https://supper-makan-apa.herokuapp.com";
+const server = "https://witty-puce-boot.cyclic.app";
 const chaiHttp = require('chai-http');
 const { describe } = require('mocha');
 const expect = require("chai").expect;
@@ -84,7 +84,7 @@ describe("LOCATIONS", () => {
   //       "address": "75 Tanjong Pagar Road Singapore 088496",
   //       "located_at": "South",
   //       "cuisineId": "Korean",
-  //       "priceId": "$$$",
+  //       "priceId": "moderate",
   //       "openingHour": "11am to 2am",
   //       "image": "https://sethlui.com/wp-content/uploads/2014/11/supper-listicle-14.jpg"
   //     };
@@ -185,8 +185,8 @@ describe("REVIEWS", () => {
   // describe("/POST review", () => {
   //   it("it should POST a review", (done) => {
   //     let myreview = {
-  //       "location_id": 9,
-  //       "user_id": 14,
+  //       "location_id": "9",
+  //       "user_id": "14",
   //       "review": "Authentic Korean food.  Nice environment to dine in.",
   //     };
   //     chai.request(server)

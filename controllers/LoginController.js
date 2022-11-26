@@ -14,6 +14,8 @@ class LoginController {
     res.status(status);
     res.json({ message, data });
   }
+
+  
 }
 
 module.exports = LoginController;
