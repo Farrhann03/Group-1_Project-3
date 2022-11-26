@@ -9,7 +9,7 @@ const locationController = new LocationController();
 const reviewController = new ReviewController();
 const favoriteController = new FavoriteController();
 const cors = require('cors');
-
+const app = express();
 
 app.use(cors());
 

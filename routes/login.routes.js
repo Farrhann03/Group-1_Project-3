@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
-const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config");
 const app = express();
