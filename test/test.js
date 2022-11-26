@@ -185,8 +185,8 @@ describe("REVIEWS", () => {
   // describe("/POST review", () => {
   //   it("it should POST a review", (done) => {
   //     let myreview = {
-  //       "location_id": 9,
-  //       "user_id": 14,
+  //       "location_id": "9",
+  //       "user_id": "14",
   //       "review": "Authentic Korean food.  Nice environment to dine in.",
   //     };
   //     chai.request(server)
