@@ -8,7 +8,10 @@ const { sequelize } = require('../models');
 const locationController = new LocationController();
 const reviewController = new ReviewController();
 const favoriteController = new FavoriteController();
+const cors = require('cors');
 
+
+app.use(cors());
 
 router.get("/user", (req, res) => {
   return res.send("You have called a user route");
