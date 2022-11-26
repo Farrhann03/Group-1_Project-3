@@ -84,7 +84,7 @@ describe("LOCATIONS", () => {
   //       "address": "75 Tanjong Pagar Road Singapore 088496",
   //       "located_at": "South",
   //       "cuisineId": "Korean",
-  //       "priceId": "$$$",
+  //       "priceId": "moderate",
   //       "openingHour": "11am to 2am",
   //       "image": "https://sethlui.com/wp-content/uploads/2014/11/supper-listicle-14.jpg"
   //     };
